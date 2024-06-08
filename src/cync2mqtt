@@ -267,7 +267,7 @@ class cync2mqtt(object):
     async def run_mqtt(self):
         try:
             #self.mqtt = MQTTClient(config={'reconnect_retries':-1, 'reconnect_max_interval': 60})
-            self.mqtt = MQTTClient(config={'reconnect_retries':0, 'auto_reconnect': False})
+            self.mqtt = MQTTClient(config={'reconnect_retries':0, 'auto_reconnect': False, 'default_retain': True})
             ret = await self.mqtt.connect(self.mqtt_url)
         except Exception as ce:
             logger.error("MQTT Connection failed: %s" % ce)
